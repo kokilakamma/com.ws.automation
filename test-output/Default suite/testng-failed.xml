@@ -6,7 +6,9 @@
       <class name="com.ws.testcase.TestLoginPage">
         <methods>
           <include name="tearDown"/>
+          <include name="testForgotPassword"/>
           <include name="setUp"/>
+          <include name="setUpReport"/>
           <include name="testLoginFunctionality"/>
         </methods>
       </class> <!-- com.ws.testcase.TestLoginPage -->

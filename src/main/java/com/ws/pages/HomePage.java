@@ -11,7 +11,7 @@ public class HomePage extends DriverScript {
 	@FindBy(linkText = "Log in") WebElement LoginLink;
 	@FindBy(linkText = "Log out")WebElement logoutLink;
 
-	// ---------- page initialization
+	// ---------- page initialization-------
 
 	public HomePage() {
 		PageFactory.initElements(driver, this);

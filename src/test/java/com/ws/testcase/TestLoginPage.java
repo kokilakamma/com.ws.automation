@@ -7,30 +7,44 @@ public class TestLoginPage extends BaseTest {
 
 	@Test(priority = 1)
 	public void testLoginPageTitle() {
-
+		logger=report.createTest("Test Login Page:");
 		homepage.clickLogin();
+		logger.pass("Clicked on login link");
 		String title = loginpage.getLoginTitle();
+		logger.pass("get the home page title");
 		System.out.println("Title of the page is:" + title);
 		Assert.assertTrue(title.contains("Login"));
+		logger.pass("Login page verification successful");
 	}
 
 	@Test(priority = 2)
 	public void testLoginFunctionality() {
+		logger= report.createTest("Testing login functionality");
 		homepage.clickLogin();
+		logger.pass("Clicked on login link");
 		loginpage.enterEmail("testingweb1234@gmail.com");
+		logger.pass("Entered Email");
 		loginpage.enterPassword("password@123");
+		logger.pass("Entered password");
 		loginpage.clickLoginButton();
+		logger.pass("Clicked on login button");
 		boolean flag = homepage.isLogoutLinkDisplayed();
 		Assert.assertTrue(flag);
+		logger.pass("Verified for logout link");
 		homepage.clickLogoutLink();
+		logger.pass("Login successful");
 		loginpage.forgotPasswordLink();
+		
 		
 	}
 	@Test(priority = 3)
 	public void testForgotPassword() {
+		logger=report.createTest("Testing forgot password link");
 		boolean flag = loginpage.isForgotPasswordLinkDisplayed();
 		Assert.assertTrue(flag);
+		logger.pass("Forgot password link displayed");
 		loginpage.forgotPasswordLink();
+		logger.pass("Clicked on forgot password link");
 		String title = forgotpasswordpage.recoveryPageTitle();
 		System.out.println("Title of recovery page is :" +title);
 		boolean display = forgotpasswordpage.isRecoveryTextDisplayed();
