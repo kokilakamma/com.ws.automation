@@ -9,10 +9,11 @@ import com.ws.base.DriverScript;
 public class ForgotPasswordRecovery extends DriverScript {
 	
 	//--- Page element identification
-	@FindBy(xpath = "//h1[normalize-space()='Password recovery']") WebElement passwordRecoveryText;
-	@FindBy(xpath = "//input[@id='Email']") WebElement emailTextField;
+	@FindBy(xpath = "//h1[text()='Password recovery']") WebElement passwordRecoveryText;
+	@FindBy(xpath = "//input[@id='Email']") WebElement passwordrecoveryemailTextField;
 	@FindBy(xpath = "//span[@for='Email']") WebElement wrongEmailText;
 	@FindBy(name = "send-email") WebElement recoverButton;
+	@FindBy(xpath = "//div[@class = 'result']") WebElement emailInstructionSentMessage;
 	
 	//----Page initialization
 	public ForgotPasswordRecovery()
@@ -22,14 +23,19 @@ public class ForgotPasswordRecovery extends DriverScript {
 	
 	//----Page Actions/Methods
 	
-	public boolean isRecoveryTextDisplayed()
+	public boolean isPasswordRecoverDisplayed()
 	{
-		 return passwordRecoveryText.isDisplayed();
+		return passwordRecoveryText.isDisplayed();
+	}
+	public String getPasswordRecoveryText()
+	{
+		 return passwordRecoveryText.getText();
 	}
 	
-	public void enterEmail()
+	public void enterEmail(String email)
 	{
-		emailTextField.sendKeys("testingweb1234@gmail.com");
+		passwordrecoveryemailTextField.clear();
+		passwordrecoveryemailTextField.sendKeys("email");
 	}
 	
 	public void clickRecoverButton()
@@ -37,6 +43,14 @@ public class ForgotPasswordRecovery extends DriverScript {
 		recoverButton.click();
 	}
 	 
+	public String getWrongEmailMessage()
+	{
+		return wrongEmailText.getText();
+	}
+	public String getEmailSentMessage()
+	{
+		return emailInstructionSentMessage.getText();
+	}
 	public String recoveryPageTitle()
 	{
 		return driver.getTitle();

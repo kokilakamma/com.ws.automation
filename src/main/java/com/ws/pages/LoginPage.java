@@ -35,7 +35,7 @@ public class LoginPage extends DriverScript {
 		LoginButton.click();
 	}
 
-	public void forgotPasswordLink() {
+	public void clickForgotPasswordLink() {
 		 ForgotPasswordLink.click();
 			
 	}
